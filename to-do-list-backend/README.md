@@ -1,4 +1,4 @@
-# to-do list
+# to-do list backend Api
 
 ## Sumário
 
@@ -26,7 +26,7 @@
 
 ## Descrição
 
-**Objetivo**: Neste projeto foi desenvolvido uma aplicação completa com frontend em javascript e React.js, um backend em node.js e um banco de dados PostgreSQL. Essa aplicação permite salvar e excluir tarefas em um banco de dados. Os conhecimentos aplicados foram:
+**Objetivo**: O objetivo dessa aplicação, é manipular um banco de dados. Os conhecimentos aplicados foram:
 
 - Arquitetura REST;
 - Autenticações e Permissões com JWT;
@@ -34,14 +34,12 @@
 - Banco de Dados SQL (PostgreSQL);
 - Uso de containers (Docker).
 
-<img src="./to-do-list-frontend/public/Screenshot from 2022-03-03 16-59-38.png" >
-
 ## Pré-requisitos
 
+- `docker`
 - `npm version 6.14.13`
 - `node version 14.17.0`
-- `docker version 20.10.13`
-- `docker-compose version 1.29.2`
+- `Um banco de dados postgreSQL`
 
 
 ## Instalação
@@ -52,17 +50,23 @@
 - Vá para a pasta da aplicação
   ```sh
     cd to-do-list-backend
-
+- Configure o arquivo .env (use o arquivo .env.example como guia)
 
 ## Instruções para iniciar o projeto
 
 <br>
 
 - Comando para iniciar
-
   ```sh
-  sudo docker-compose up
+    docker image build -t todobackend
 
+- Comando para inserir as tabelas no banco de dados
+  ```sh
+    npx sequelize db:migrate   
+
+- Comando para inserir as categorias na tabela
+  ```sh
+    npx sequelize db:seed:all
 <br/>
 
 ## Documentação

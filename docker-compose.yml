@@ -1,0 +1,36 @@
+version: '3.1'
+
+services:
+  frontend:
+    build: ./to-do-list-frontend
+    container_name: td_frontend
+    ports:
+      - 3000:3000
+    depends_on:
+      - backend
+  backend:
+    build: ./to-do-list-backend
+    container_name: td_backend
+    ports:
+      - 3001:3001
+    depends_on:
+      - db
+    environment:
+      - JWT_SECRET=to1do2li3st4
+      - PASSWORD_POSTGRES=postgres
+      - HOST=postgres
+      - DATABASE=todo
+      - DB_USERNAME=postgres
+      - DB_PORT=5432
+  db:
+    image: postgres
+    restart: always
+    ports:
+    - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: postgres
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
